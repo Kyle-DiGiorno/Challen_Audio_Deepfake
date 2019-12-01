@@ -7,18 +7,12 @@
     android:orientation="vertical">
 
     <LinearLayout
+        android:id="@+id/firstLinearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:visibility="gone"
         tools:visibility="visible">
-
-        <Button
-            android:id="@+id/submitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="SUBMIT" />
 
         <EditText
             android:id="@+id/inputText"
@@ -30,6 +24,13 @@
             android:layout_marginBottom="10dp"
             android:inputType="textPersonName"
             android:text="SAY SOMETHING" />
+
+        <Button
+            android:id="@+id/submitButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="SUBMIT" />
 
     </LinearLayout>
 
@@ -52,7 +53,7 @@
             tools:visibility="visible">
 
             <Button
-                android:id="@+id/start"
+                android:id="@+id/startButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Start"
@@ -60,7 +61,7 @@
                 tools:visibility="visible" />
 
             <Button
-                android:id="@+id/pause"
+                android:id="@+id/pauseButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
@@ -73,7 +74,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/downloadButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Download" />
