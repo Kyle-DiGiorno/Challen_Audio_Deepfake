@@ -2,9 +2,11 @@ package com.example.challenaudiodeepfake;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Point;
 import android.location.GnssNavigationMessage;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,12 +22,17 @@ public class MainActivity extends AppCompatActivity {
     private Button pauseButton;
     private Button startButton;
     private MediaPlayer mediaPlayer;
-
+    private int width;
+    private int height;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Display display = getWindowManager().getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        int width = size.x;
+        int height = size.y;
         submitButton = findViewById(R.id.submitButton);
         inputText = findViewById(R.id.inputText);
         popupLayout = findViewById(R.id.popupLayout);
@@ -45,5 +52,10 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
+    public int getWidth() {
+        return width;
+    }
+    public int getHeight() {
+        return height;
+    }
 }

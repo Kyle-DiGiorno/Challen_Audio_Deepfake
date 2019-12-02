@@ -11,13 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         tools:visibility="visible">
 
         <EditText
             android:id="@+id/inputText"
             android:layout_width="match_parent"
-            android:layout_height="115dp"
             android:layout_marginLeft="15dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="15dp"
@@ -38,7 +37,15 @@
         android:id="@+id/popupLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/downloadButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Download" />
 
         <ImageView
             android:layout_width="250dp"
@@ -46,12 +53,6 @@
             android:layout_gravity="center_horizontal"
             android:layout_margin="35dp"
             android:src="@drawable/geoffface" />
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal" />
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -77,12 +78,11 @@
                 tools:visibility="visible" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/downloadButton"
-            android:layout_width="wrap_content"
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="Download" />
+            android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
 </LinearLayout>
