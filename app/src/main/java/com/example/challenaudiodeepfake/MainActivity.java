@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         //pauseButton = findViewById(R.id.pauseButton);
         startButton = findViewById(R.id.startButton);
 
+
         popupLayout.setVisibility(View.GONE);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
