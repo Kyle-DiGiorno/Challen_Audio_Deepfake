@@ -16,8 +16,6 @@
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_weight=".5" />
 
         <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -68,8 +66,29 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone"
-        tools:visibility="visible">
+
+      
+
+                
+
+        <SeekBar
+            android:id="@+id/seekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="10dp" />
+
+        <Button
+            android:id="@+id/startButton"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="15dp"
+            android:background="@drawable/play"
+            android:onClick="playButton"
+            android:visibility="visible"
+            tools:visibility="visible" />
 
         <Button
             android:id="@+id/downloadButton"
@@ -77,35 +96,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Download" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="57dp"
-            android:layout_gravity="center_horizontal"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/pauseButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:layout_weight="0"
-                android:background="@drawable/stop" />
-
-            <Button
-                android:id="@+id/startButton"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="10dp"
-                android:background="@drawable/play"
-                android:visibility="visible"
-                tools:visibility="visible" />
-        </LinearLayout>
-
-        <SeekBar
-            android:id="@+id/seekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal" />
         <LinearLayout android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -128,6 +118,4 @@
                 app:layout_gravity="center_horizontal" />
         </LinearLayout>
 
-
     </LinearLayout>
-</LinearLayout>
