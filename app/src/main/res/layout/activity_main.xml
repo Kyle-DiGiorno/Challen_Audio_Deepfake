@@ -22,7 +22,6 @@
             android:layout_marginTop="50dp"
             android:layout_marginRight="15dp"
             android:layout_marginBottom="10dp"
-
             android:inputType="textPersonName"
             android:text="SAY SOMETHING" />
 
@@ -72,7 +71,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
             android:text="Download" />
 
     </LinearLayout>
