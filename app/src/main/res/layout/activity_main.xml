@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
@@ -14,23 +14,50 @@
         android:visibility="visible"
         tools:visibility="visible">
 
-        <EditText
-            android:id="@+id/inputText"
+        <Space
+            android:layout_width="match_parent"
+
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="8"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5" />
+
+            <EditText
+                android:id="@+id/inputText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="7"
+                android:inputType="textPersonName"
+                android:text="SAY SOMETHING" />
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
-            android:inputType="textPersonName"
-            android:text="SAY SOMETHING" />
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="8">
 
-        <Button
-            android:id="@+id/submitButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="SUBMIT" />
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5" />
+
+            <Button
+                android:id="@+id/submitButton"
+                android:layout_width="0dp"
+                android:layout_weight="7"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:text="SUBMIT" />
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -39,19 +66,16 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="visible">
 
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="35dp"
-            android:src="@drawable/geoffface" />
+      
+
+                
 
         <SeekBar
             android:id="@+id/seekBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_gravity="center_horizontal"
             android:layout_margin="10dp" />
 
@@ -72,6 +96,26 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Download" />
+            android:layout_gravity="center_horizontal" />
+        <LinearLayout android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:weightSum="3"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight=".5" />
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="0dp"
+                android:layout_weight="2"
+                android:scaleType="centerInside"
+                android:src="@drawable/geoffface"
+                app:layout_gravity="center_horizontal" />
+        </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
