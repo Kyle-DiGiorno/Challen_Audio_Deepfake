@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,18 +14,6 @@
         android:orientation="vertical"
         android:visibility="visible"
         tools:visibility="visible">
-
-        <EditText
-            android:id="@+id/inputText"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="10dp"
-
-            android:inputType="textPersonName"
-            android:text="SAY SOMETHING" />
 
         <Button
             android:id="@+id/submitButton"
@@ -43,10 +32,11 @@
         android:visibility="visible">
 
         <ImageView
+            android:id="@+id/geoffface"
             android:layout_width="250dp"
             android:layout_height="250dp"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="35dp"
+            android:layout_margin="37dp"
             android:src="@drawable/geoffface" />
 
         <SeekBar
@@ -72,8 +62,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="10dp"
             android:text="Download" />
 
+        <ImageView
+            android:id="@+id/challenmouthflap"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="-263dp"
+            android:src="@drawable/challenmouthflap" />
+
     </LinearLayout>
+
 </LinearLayout>
