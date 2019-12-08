@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         challenmouthflap = findViewById(R.id.challenmouthflap);
 
 
+
         popupLayout.setVisibility(View.GONE);
 
         submitButton.setOnClickListener(new View.OnClickListener() {
