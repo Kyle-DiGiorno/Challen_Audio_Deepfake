@@ -5,9 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+
 import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
+
 import android.graphics.Point;
 import android.location.GnssNavigationMessage;
 import android.media.MediaPlayer;
@@ -22,7 +24,7 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
-import android.webkit.MimeTypeMap;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -43,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private MediaPlayer mediaPlayer;
     private int timeLength;
 
+
     private ImageView challenmouthflap;
     private Button uploadButton;
     private android.view.animation.Animation animation;
@@ -54,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
     private Uri file;
 
     private String filePath;
+
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,26 +75,12 @@ public class MainActivity extends AppCompatActivity {
         //pauseButton = findViewById(R.id.pauseButton);
         startButton = findViewById(R.id.startButton);
         challenmouthflap = findViewById(R.id.challenmouthflap);
+
         uploadButton = findViewById(R.id.uploadButton);
         downloadButton = findViewById(R.id.downloadButton);
 
 
 
-        //setUploadButton();
-        /*
-        downloadButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                downloadManager = (DownloadManager)getSystemService(Context.DOWNLOAD_SERVICE);
-                //Uri uri = Uri.parse();
-                DownloadManager.Request request = new DownloadManager.Request(uri);
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                Long reference = downloadManager.enqueue(request);
-
-            }
-        });
-
-         */
 
 
 
@@ -183,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
             startButton.setBackgroundResource(R.drawable.stop);
 
 
-// Colin was here
+
         } else {
             mediaPlayer.pause();
             animation.cancel();
@@ -293,9 +284,6 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-
-
-
 
 
 
