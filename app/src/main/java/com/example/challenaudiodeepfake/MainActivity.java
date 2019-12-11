@@ -1,9 +1,13 @@
 package com.example.challenaudiodeepfake;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.app.DownloadManager;
+import android.content.Context;
+import android.content.Intent;
 import android.app.ProgressDialog;
 import android.graphics.Point;
 import android.location.GnssNavigationMessage;
@@ -20,12 +24,16 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
+
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import com.github.hiteshsondhi88.libffmpeg.ExecuteBinaryResponseHandler;
 import com.github.hiteshsondhi88.libffmpeg.FFmpeg;
 import com.github.hiteshsondhi88.libffmpeg.exceptions.FFmpegCommandAlreadyRunningException;
@@ -43,12 +51,24 @@ public class MainActivity extends AppCompatActivity {
     private SeekBar seekBar;
     //private Button pauseButton;
     private Button startButton;
+
     private MediaPlayer mediaPlayer;
     private int timeLength;
-    private int width;
-    private int height;
+
+
     private ImageView challenmouthflap;
+    private Button uploadButton;
     private android.view.animation.Animation animation;
+
+    private Intent myFileIntent;
+
+    private Button downloadButton;
+    private DownloadManager downloadManager;
+    private Uri file;
+
+    private String filePath;
+
+   
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,8 +77,7 @@ public class MainActivity extends AppCompatActivity {
         Display display = getWindowManager().getDefaultDisplay();
         Point size = new Point();
         display.getSize(size);
-        int width = size.x;
-        int height = size.y;
+
         submitButton = findViewById(R.id.submitButton);
 
         popupLayout = findViewById(R.id.popupLayout);
@@ -67,62 +86,24 @@ public class MainActivity extends AppCompatActivity {
         startButton = findViewById(R.id.startButton);
         challenmouthflap = findViewById(R.id.challenmouthflap);
 
+        uploadButton = findViewById(R.id.uploadButton);
+        downloadButton = findViewById(R.id.downloadButton);
+
+
+
+
+
+
 
         popupLayout.setVisibility(View.GONE);
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                popupLayout.setVisibility(View.VISIBLE);
-            }
-        });
+        submittingButton();
+        setUploadButton();
 
 
 
-        mediaPlayer = MediaPlayer.create(this, R.raw.hide);
-        mediaPlayer.setLooping(true);
-        mediaPlayer.seekTo(0);
-        mediaPlayer.setVolume(5, 5);
-        timeLength = mediaPlayer.getDuration();
-
-        seekBar.setMax(timeLength);
-        seekBar.setOnSeekBarChangeListener(
-                new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        if (fromUser == true) {
-                            mediaPlayer.seekTo(progress);
-                            seekBar.setProgress(progress);
 
 
-                        }
-                    }
-
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-
-                    }
-                }
-        );
-
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (mediaPlayer != null) {
-                    try {
-                        Message msg = new Message();
-                        msg.what = mediaPlayer.getCurrentPosition();
-                        handler.sendMessage(msg);
-                        Thread.sleep(1000);
-                    } catch (InterruptedException e){ }
-                }
-            }
-        }).start();
     }
 
     private Handler handler = new Handler() {
@@ -211,11 +192,107 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public int getWidth() {
-        return width;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case 10:
+                if (resultCode == RESULT_OK) {
+                    if (data != null && data.getData() != null) {
+                        //filePath = data.getData().getPath();
+                        file = data.getData();
+                    }
+
+                }
+                break;
+        }
     }
-    public int getHeight() {
-        return height;
+
+    public void setUploadButton(){
+        uploadButton.setOnClickListener(new View.OnClickListener()  {
+            @Override
+            public void onClick(View v)  {
+                /*
+                try {
+                    FileInputStream hideAndSeek = new FileInputStream("hide.mp3");
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+
+                 */
+
+
+
+                myFileIntent = new Intent(Intent.ACTION_GET_CONTENT);
+                myFileIntent.setType("*/*");
+                filePath = myFileIntent.getStringExtra("GetPath");
+                startActivityForResult(myFileIntent, 10);
+
+
+
+
+
+
+            }
+        });
+
+
+    }
+
+    public void submittingButton() {
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                popupLayout.setVisibility(View.VISIBLE);
+
+                    mediaPlayer = MediaPlayer.create(MainActivity.this, file);
+                    mediaPlayer.setLooping(true);
+                    mediaPlayer.seekTo(0);
+                    mediaPlayer.setVolume(5, 5);
+                    timeLength = mediaPlayer.getDuration();
+
+                seekBar.setMax(timeLength);
+                seekBar.setOnSeekBarChangeListener(
+                        new SeekBar.OnSeekBarChangeListener() {
+                            @Override
+                            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                                if (fromUser == true) {
+                                    mediaPlayer.seekTo(progress);
+                                    seekBar.setProgress(progress);
+
+
+                                }
+                            }
+
+                            @Override
+                            public void onStartTrackingTouch(SeekBar seekBar) {
+
+                            }
+
+                            @Override
+                            public void onStopTrackingTouch(SeekBar seekBar) {
+
+                            }
+                        }
+                );
+                //yo
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (mediaPlayer != null) {
+                            try {
+                                Message msg = new Message();
+                                msg.what = mediaPlayer.getCurrentPosition();
+                                handler.sendMessage(msg);
+                                Thread.sleep(1000);
+                            } catch (InterruptedException e){ }
+                        }
+                    }
+                }).start();
+
+            }
+        });
+
     }
     static double bytesToDouble(byte firstByte, byte secondByte) {
         // convert two bytes to one short (little endian)
@@ -320,6 +397,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
 }

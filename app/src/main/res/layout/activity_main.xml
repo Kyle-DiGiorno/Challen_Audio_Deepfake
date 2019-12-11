@@ -16,6 +16,13 @@
         tools:visibility="visible">
 
         <Button
+            android:id="@+id/uploadButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:text="Upload" />
+
+        <Button
             android:id="@+id/submitButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -69,7 +76,7 @@
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginTop="-263dp"
+            android:layout_marginTop="-230dp"
             android:src="@drawable/challenmouthflap" />
 
     </LinearLayout>
